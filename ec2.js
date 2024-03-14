@@ -41,7 +41,7 @@ async function processMessages() {
                     Key: {
                         'request_id': { N: body.requestId.toString() }
                     },
-                    UpdateExpression: 'SET #output = :attrValue, #attrName2 = :attrValue2',
+                    UpdateExpression: 'SET #attrName = :attrValue, #attrName2 = :attrValue2',
                     ExpressionAttributeNames: {
                         '#attrName': 'output',
                         '#attrName2': 'completed'

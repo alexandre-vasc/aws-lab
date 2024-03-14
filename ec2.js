@@ -44,7 +44,7 @@ async function processMessages() {
                         '#attrName2': 'completed'
                     },
                     ExpressionAttributeValues: {
-                        ':attrValue': { N: processedOutput },
+                        ':attrValue': { N: processedOutput.toString() },
                         ':attrValue2': { S: 'true'}
                     }
                 }).promise();

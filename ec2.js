@@ -32,7 +32,8 @@ async function processMessages() {
                 console.log('Processing message:', body);
                 const processedOutput = processNumber(body.number)
 
-                console.log('processed: ', processedOutput.toString(), body.requestId.toString() )
+                console.log('processed: ', processedOutput)
+                console.log('requestID:', body.requestId)
                 console.log('updating ', DYNAMO_TABLE)
                 // Update DynamoDB table                
                 await dynamoDB.updateItem({
@@ -72,6 +73,7 @@ async function main() {
 
 // process the number
 function processNumber(number) {
+    console.log("calculating prime for: ", number)
     let primeCount = 0;
     let foundPrime = 0;
     let useless = 0

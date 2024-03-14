@@ -32,11 +32,13 @@ async function processMessages() {
                 console.log('Processing message:', body);
                 const processedOutput = processNumber(body.number)
 
+                console.log('processed: ', processedOutput.toString(), body.request_id.toString() )
+                console.log('updating ', DYNAMO_TABLE)
                 // Update DynamoDB table                
                 await dynamoDB.updateItem({
                     TableName: DYNAMO_TABLE,
                     Key: {
-                        'request_id': { S: body.request_id }
+                        'request_id': { N: body.request_id.toString() }
                     },
                     UpdateExpression: 'SET #output = :attrValue, #attrName2 = :attrValue2',
                     ExpressionAttributeNames: {
